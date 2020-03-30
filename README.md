@@ -11,3 +11,10 @@
 - Any Python IDE can be used to code
 - Use correct extension to help you write your code smoothly
 - Report any discomfort in whatsapp group or can create an issue
+
+# - Note
+
+- Makesure to clone project in your virtual environment setup
+- Run pip list to confirm that djsngo packege exists
+- if it is not run pipenv install on install packege
+- Then run pipenv shell to activate virtual environment
