@@ -18,3 +18,9 @@
 - Run pip list to confirm that djsngo packege exists
 - if it is not run pipenv install on install packege
 - Then run pipenv shell to activate virtual environment
+
+# - Product class
+# Atributes:
+- product name
+- product price
+- image url for product logo
