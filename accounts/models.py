@@ -25,25 +25,24 @@ class AccountManager(BaseUserManager):
             email = self.normalize_email(email)
         )
         user.set_password(password)
-        user.save(user = self._db)
+        user.save(using = self._db)
         return user
         
 
-    def create_superuser(self,username,email, password ):
+    def create_superuser(self,email, password ):
         # Call Above defined functions
         self.valueErrorFunction(email)
 
         user = self.model(
             email = self.normalize_email(email),
-            username = username,
             password = password,
             is_staff = True,
             is_active = True,
-            is_superuser = True,
+            is_super = True,
             is_admin = True
         )
         
-        user.save(user = self._db)
+        user.save(using = self._db)
         return user
         
 
@@ -60,7 +59,7 @@ class Account(AbstractBaseUser):
     is_super = models.BooleanField(default=False)
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['university_name ','university_abb']
+    REQUIRED_FIELDS = []
     objects = AccountManager()
     def __str__(self):
         return self.university_name
