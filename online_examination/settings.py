@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     #Custom apps
     'accounts.apps.AccountsConfig',
+    'products.apps.ProductsConfig',
 
     #Django apps
     'django.contrib.admin',
@@ -55,6 +56,11 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'online_examination.urls'
 
+
+
+
+AUTHENTICATION_BACKENDS = [
+                           'django.contrib.auth.backends.ModelBackend',]
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
