@@ -48,11 +48,11 @@ class Account(AbstractBaseUser):
     objects = AccountManager()
 
     def __str__(self):
-        return self.username
+        return self.email
 
 
-    def has_perm(self,perm, obj=None):
+    def has_perms(self,perm, obj=None):
         return self.is_super
 
     def has_module_perms(self,app_label):
-        return True
+        return self.is_super
