@@ -1,4 +1,6 @@
 from django.db import models
+from django.utils.text import slugify
+
 
 
 from django.db.models.signals import pre_save
@@ -10,6 +12,7 @@ class Products(models.Model):
     price =models.FloatField(verbose_name="Price per unique use")
     date_added = models.DateTimeField(verbose_name="Added date", auto_now_add=True)
     date_updated = models.DateTimeField(verbose_name="Date updated",auto_now=True )
+    slug = models.SlugField(verbose_name = " Slug Url",unique = True, max_length = 500 ,null = True, blank = False)
 
     def __str__(self):
         return self.unique_id + " - " + self.title
@@ -23,7 +26,8 @@ def presave_product_reciever(sender, instance, *args, **kwargs ):
             unique_id =  unique_id + str(counter)
             counter += 1
             instance.unique_id = unique_id
-       
-            
+    if not instance.slug:
+        instance.slug = slugify("/product"+ "-"+instance.unique_id)
+
             
 pre_save.connect( presave_product_reciever,sender=Products)

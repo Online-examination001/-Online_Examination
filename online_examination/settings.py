@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     #Custom apps
     'accounts.apps.AccountsConfig',
     'products.apps.ProductsConfig',
+    'universities.apps.UniversitiesConfig',
 
     #Django apps
     'django.contrib.admin',
