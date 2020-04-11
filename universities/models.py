@@ -1,10 +1,10 @@
 from django.db import models
-from accounts.models import Account
-
+#from accounts.models import Account
+from django.contrib.auth.models import User
 # Create your models here.
  
 class  University(models.Model):
-    user = models.ForeignKey(Account,verbose_name = "University Admin", on_delete= models.CASCADE)
+    user = models.ForeignKey(User,verbose_name = "University Admin", on_delete= models.CASCADE)
     university_full_name = models.CharField(max_length=255, verbose_name="University full name",null = False, blank = False)
     university_name_abb = models.CharField(max_length=15, verbose_name="University full name",null = False, blank = False)
     date_added = models.DateTimeField(verbose_name="Added date", auto_now_add=True)

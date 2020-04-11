@@ -32,10 +32,11 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     #Custom apps
-    'accounts.apps.AccountsConfig',
+    #'accounts.apps.AccountsConfig',
     'products.apps.ProductsConfig',
     'universities.apps.UniversitiesConfig',
     'rest_framework',
+    'rest_framework.authtoken',
 
     #Django apps
     'django.contrib.admin',
@@ -44,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+   
 ]
 
 MIDDLEWARE = [
@@ -80,7 +82,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'online_examination.wsgi.application'
-AUTH_USER_MODEL = 'accounts.Account'
+#AUTH_USER_MODEL = 'accounts.Account'
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
@@ -88,7 +90,7 @@ AUTH_USER_MODEL = 'accounts.Account'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': os.path.join(BASE_DIR, 'db.sqliteR3'),
     }
 }
 
@@ -137,7 +139,7 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
     ],
         'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.BasicAuthentication',
-        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+        
     ]
 }

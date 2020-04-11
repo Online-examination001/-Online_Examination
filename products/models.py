@@ -1,7 +1,7 @@
 from django.db import models
 from django.utils.text import slugify
-from accounts.models import Account
-
+#from accounts.models import Account
+from django.contrib.auth.models import User
 
 
 from django.db.models.signals import pre_save
@@ -11,7 +11,7 @@ class Products(models.Model):
     title = models.CharField(verbose_name="Short title", max_length=255)
     description = models.CharField(verbose_name="Product description",max_length=1000 )
     price =models.FloatField(verbose_name="Price per unique use")
-    user = models.ForeignKey(Account,verbose_name = "Added by", on_delete= models.CASCADE, null = True, blank = False )
+    user = models.ForeignKey(User,verbose_name = "Added by", on_delete= models.CASCADE, null = True, blank = False )
     date_added = models.DateTimeField(verbose_name="Added date", auto_now_add=True)
     date_updated = models.DateTimeField(verbose_name="Date updated",auto_now=True )
     slug = models.SlugField(verbose_name = " Slug Url",unique = True, editable=False, max_length = 500 ,null = True, blank = False)
